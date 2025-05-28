@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-py"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(uuid())
+  name        String
+  email       String   @unique
+  weightKg    Float
+  dailyGoalMl  Float
+  waterIntakes WaterIntake[]
+}
+
+model WaterIntake {
+  id         String   @id @default(uuid())
+  userId     String
+  date       DateTime @db.Date
+  ml   Int
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, date])
+}
