@@ -1,0 +1,16 @@
+# **Simplified Architecture Diagram**
+
+```plaintext
+Application Entrypoint (main)
+  ↓
+FastAPI (API Framework, Router)
+  ↓
+Controller (HTTP Adapter)
+  ↓
+Use Cases (Application Layer)
+  ↓
+Domain (Entities, Value Objects, Repositories)
+  ↓
+Repository (Ports → Prisma Adapter)
+  ↓
+Database (PostgreSQL)
