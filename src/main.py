@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from infrastructure.logging import AppLogger
 from infrastructure.api.middlewares.error_handler import add_error_handlers
@@ -16,6 +17,14 @@ app_api = FastAPI(
 )
 
 add_error_handlers(app_api)
+
+app_api.add_middleware(
+  CORSMiddleware,
+  allow_origins=["*"],
+  allow_credentials=True,
+  allow_methods=["*"],
+  allow_headers=["*"]
+)
 
 app_api.include_router(router)
 
