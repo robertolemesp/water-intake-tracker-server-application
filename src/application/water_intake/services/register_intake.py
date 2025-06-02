@@ -40,7 +40,7 @@ class RegisterWaterIntakeUseCase:
 
         water_intake.calculate_progress(water_intake_input.userDailyGoalMl)
 
-      await self.repo.save({
+      saved_water_intake = await self.repo.save({
         'id': water_intake.id,
         'user_id': water_intake.user_id,
         'date': water_intake.date,
@@ -48,7 +48,7 @@ class RegisterWaterIntakeUseCase:
       })
 
       return WaterIntakeOutput(
-        id=water_intake.id,
+        id=saved_water_intake['id'],
         userId=water_intake.user_id,
         date=water_intake.date.isoformat(),
         ml=water_intake.ml,
