@@ -50,6 +50,7 @@ class RetrieveUserDayHydrationSummaryUseCase:
           user_id=existing_water_intake['user_id'],
           date=existing_water_intake['date'],
           ml=existing_water_intake['ml'],
+          is_goal_achieved=existing_water_intake['is_goal_achieved'],
           remaining_ml_to_goal=existing_water_intake['remaining_ml_to_goal'],
           goal_average=existing_water_intake['goal_average']
         )
